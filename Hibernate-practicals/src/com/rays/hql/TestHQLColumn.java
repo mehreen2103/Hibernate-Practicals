@@ -1,15 +1,16 @@
-package com.rays.sql;
+
+package com.rays.hql;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.SQLQuery;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class TestSQLAll {
+public class TestHQLColumn {
 
 	public static void main(String[] args) {
 
@@ -19,7 +20,7 @@ public class TestSQLAll {
 
 		Transaction tx = session.beginTransaction();
 
-		SQLQuery q = session.createSQLQuery("select * from st_user");
+		Query q = session.createQuery("select id, firstName from UserDTO");
 
 		List list = q.list();
 
@@ -29,12 +30,7 @@ public class TestSQLAll {
 
 			Object[] dto = (Object[]) it.next();
 			System.out.print(dto[0]);
-			System.out.print("\t" + dto[1]);
-			System.out.print("\t" + dto[2]);
-			System.out.print("\t" + dto[3]);
-			System.out.print("\t" + dto[4]);
-			System.out.print("\t" + dto[5]);
-			System.out.println("\t" + dto[6]);
+			System.out.println("\t" + dto[1]);
 		}
 		tx.commit();
 		session.close();

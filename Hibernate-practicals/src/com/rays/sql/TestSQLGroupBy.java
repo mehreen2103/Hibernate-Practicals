@@ -1,3 +1,4 @@
+
 package com.rays.sql;
 
 import java.util.Iterator;
@@ -9,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class TestSQLAll {
+public class TestSQLGroupBy {
 
 	public static void main(String[] args) {
 
@@ -19,7 +20,7 @@ public class TestSQLAll {
 
 		Transaction tx = session.beginTransaction();
 
-		SQLQuery q = session.createSQLQuery("select * from st_user");
+		SQLQuery q = session.createSQLQuery("select firstname, count(*) from st_user group by firstname");
 
 		List list = q.list();
 
@@ -29,12 +30,7 @@ public class TestSQLAll {
 
 			Object[] dto = (Object[]) it.next();
 			System.out.print(dto[0]);
-			System.out.print("\t" + dto[1]);
-			System.out.print("\t" + dto[2]);
-			System.out.print("\t" + dto[3]);
-			System.out.print("\t" + dto[4]);
-			System.out.print("\t" + dto[5]);
-			System.out.println("\t" + dto[6]);
+			System.out.println("\t" + dto[1]);
 		}
 		tx.commit();
 		session.close();

@@ -1,5 +1,4 @@
 package com.rays.sql;
-
 import java.util.Iterator;
 import java.util.List;
 
@@ -9,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class TestSQLAll {
+public class TestSQLOrderBy {
 
 	public static void main(String[] args) {
 
@@ -19,7 +18,7 @@ public class TestSQLAll {
 
 		Transaction tx = session.beginTransaction();
 
-		SQLQuery q = session.createSQLQuery("select * from st_user");
+		SQLQuery q = session.createSQLQuery("select * from st_user order by firstname");
 
 		List list = q.list();
 

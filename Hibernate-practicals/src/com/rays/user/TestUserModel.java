@@ -19,13 +19,13 @@ public class TestUserModel {
 	private static void testAdd() {
 
 		UserDTO dto = new UserDTO();
-		dto.setFirstName("hritika");
-		dto.setLastName("sahu");
-		dto.setLoginId("hritika@gmail.com");
+		dto.setFirstName("Mehreen");
+		dto.setLastName("Ansari");
+		dto.setLoginId("meh@gmail.com");
 		dto.setPassword("123");
 		dto.setDob(new Date());
 		dto.setAddress("indore");
-		dto.setId(3);
+		dto.setId(1);
 
 		UserModel model = new UserModel();
 
@@ -105,7 +105,7 @@ public class TestUserModel {
 	private static void testUpdate() {
 
 		UserDTO dto = new UserDTO();
-		dto.setId(2);
+		dto.setId(3);
 		dto.setFirstName("Mehar");
 		dto.setLastName("Ansari");
 		dto.setLoginId("meh21@gmail.com");
