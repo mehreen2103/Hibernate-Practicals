@@ -1,30 +1,30 @@
 
-package com.rays.hql;
+package com.rays.criteria;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 import com.rays.user.UserDTO;
 
-public class TestHQLOrderBy {
+public class TestDetachedCriteria {
 
 	public static void main(String[] args) {
+
+		DetachedCriteria dc = DetachedCriteria.forClass(UserDTO.class);
+
+		dc.add(Restrictions.like("firstName", "abc"));
 
 		SessionFactory sf = new Configuration().configure().buildSessionFactory();
 
 		Session session = sf.openSession();
 
-		Transaction tx = session.beginTransaction();
-
-		Query q = session.createQuery("from UserDTO order by firstName");
-
-		List list = q.list();
+		List<UserDTO> list = dc.getExecutableCriteria(session).list();
 
 		Iterator it = list.iterator();
 
@@ -38,7 +38,6 @@ public class TestHQLOrderBy {
 			System.out.print("\t" + dto.getDob());
 			System.out.println("\t" + dto.getAddress());
 		}
-		tx.commit();
 		session.close();
 	}
 }

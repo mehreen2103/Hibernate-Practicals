@@ -1,10 +1,10 @@
 
-package com.rays.hql;
+package com.rays.criteria;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.hibernate.Query;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 
 import com.rays.user.UserDTO;
 
-public class TestHQLOrderBy {
+public class TestCriteriaAll {
 
 	public static void main(String[] args) {
 
@@ -22,9 +22,9 @@ public class TestHQLOrderBy {
 
 		Transaction tx = session.beginTransaction();
 
-		Query q = session.createQuery("from UserDTO order by firstName");
+		Criteria criteria = session.createCriteria(UserDTO.class);
 
-		List list = q.list();
+		List list = criteria.list();
 
 		Iterator it = list.iterator();
 

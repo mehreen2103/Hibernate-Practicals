@@ -1,13 +1,19 @@
-package com.rays.hql;
+package com.rays.criteria;
+
 import java.util.Iterator;
 import java.util.List;
-import org.hibernate.Query;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 
-public class TestHQLColumn {
+import com.rays.user.UserDTO;
+
+public class TestCriteriaProjection {
 
 	public static void main(String[] args) {
 
@@ -17,9 +23,17 @@ public class TestHQLColumn {
 
 		Transaction tx = session.beginTransaction();
 
-		Query q = session.createQuery("select id, firstName from UserDTO");
+		Criteria criteria = session.createCriteria(UserDTO.class);
 
-		List list = q.list();
+		ProjectionList p = Projections.projectionList();
+
+		p.add(Projections.property("id"));
+
+		p.add(Projections.property("firstName"));
+
+		criteria.setProjection(p);
+
+		List list = criteria.list();
 
 		Iterator it = list.iterator();
 
