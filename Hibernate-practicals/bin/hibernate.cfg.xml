@@ -19,7 +19,7 @@
 <!--  			<property name="hibernate.cache.use_second_level_cache">true</property>  -->
 <!-- 			 <property name="hibernate.cache.use_query_cache">true</property>   -->
 
-<!--  		<mapping resource="com/rays/user/UserDTO.hbm.xml" />  -->
+ 		<mapping resource="com/rays/user/UserDTO.hbm.xml" /> 
 		
 <!-- 		<mapping resource="com/rays/auction/AuctionItem.hbm.xml" /> -->
 <!-- 		<mapping resource="com/rays/auction/Bid.hbm.xml" /> -->
@@ -29,7 +29,7 @@
 		
 <!-- 		<mapping resource="com/rays/inheritance/Payment.hbm.xml" />  -->
 		
-		<mapping resource="com/rays/subclass/Payment.hbm.xml" />
+<!-- 		<mapping resource="com/rays/subclass/Payment.hbm.xml" /> -->
 		
 <!-- 		<mapping resource="com/rays/subclass/discriminator/Payment.hbm.xml" /> -->
 		
